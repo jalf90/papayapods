@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="main-box">
+    <form id="forecastForm" name="weatherForm">
+      <div>
+        <label for="city-name">City</label>
+        <input id="city-name" type="text" placeholder="e.g. Barcelona" v-model="city"></input>
+      </div>
+      <button class="btn" id="submitCity" v-on:click="search">Get Weather</button>
+      <div class="error" ng-if="errorLabel">
+        <b v-if="showError"> Error: city not found! </b>
+      </div>
+    </form>
+    <div class="div-transition col-1" id="forecastResults" v-if="showForecast" v-for="day in forecast">
+      {{day.dayOfTheWeek}}
+      <div class="dayOfWeek"><b>{{day.day}}</b></div>
+      <img class="img" :src="day.image"/>
+      <span class="temperature-high">
+        <b>{{day.temperature.high}}</b>
+      </span>
+      <span class="temperature-low">
+        <b>{{day.temperature.low}}</b>
+      </span>
+    </div>
+  </div>
+</div>
